@@ -6,10 +6,15 @@ import com.away1994.lang.symbols.Symbol;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.logging.Logger;
 
 import static com.away1994.dist.constants.CommonConstants.LINE_SEPARATOR;
 
 public class FunctionImpl extends SymbolImpl implements Function {
+
+    private static final transient Logger LOGGER = Logger.getLogger(FunctionImpl.class.getName());
+
+    private ArrayList<Function> callees = new ArrayList<>();
 
     public FunctionImpl(String name, Symbol owner) {
         super(name, owner);

@@ -12,4 +12,24 @@ public class TestConstants {
     public static String AFNetworking_PROJECT_PATH = TEST_RESOURCES_PATH + "uml/project/AFNetworking";
     public static String ReactiveCocoa_PROJECT_PATH = TEST_RESOURCES_PATH + "uml/project/ReactiveCocoa";
 
+
+    public static String WEVIEW_JAVASCRIPT_BRIDGE_SEND_DATA_FUNCTION = "- (void)sendData:(id)data responseCallback:(WVJBResponseCallback)responseCallback handlerName:(NSString*)handlerName {\n" +
+            "    NSMutableDictionary* message = [NSMutableDictionary dictionary];\n" +
+            "    \n" +
+            "    if (data) {\n" +
+            "        message[@\"data\"] = data;\n" +
+            "    }\n" +
+            "    \n" +
+            "    if (responseCallback) {\n" +
+            "        NSString* callbackId = [NSString stringWithFormat:@\"objc_cb_%ld\", ++_uniqueId];\n" +
+            "        self.responseCallbacks[callbackId] = [responseCallback copy];\n" +
+            "        message[@\"callbackId\"] = callbackId;\n" +
+            "    }\n" +
+            "    \n" +
+            "    if (handlerName) {\n" +
+            "        message[@\"handlerName\"] = handlerName;\n" +
+            "    }\n" +
+            "    [self _queueMessage:message];\n" +
+            "}";
+
 }
