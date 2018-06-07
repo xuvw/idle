@@ -423,6 +423,18 @@ public class ObjectiveCParserBaseListener implements ObjectiveCParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterMethodReturnType(ObjectiveCParser.MethodReturnTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMethodReturnType(ObjectiveCParser.MethodReturnTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPropertyImplementation(ObjectiveCParser.PropertyImplementationContext ctx) { }
 	/**
 	 * {@inheritDoc}

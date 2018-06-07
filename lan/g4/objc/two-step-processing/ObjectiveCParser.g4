@@ -165,7 +165,7 @@ instanceMethodDeclaration
     ;
 
 methodDeclaration
-    : methodType? methodSelector macros? ';'
+    : methodReturnType? methodSelector macros? ';'
     ;
 
 implementationDefinitionList
@@ -203,8 +203,13 @@ selector
     | 'return'
     ;
 
+
 methodType
     : LP typeName RP
+    ;
+
+methodReturnType
+    : methodType
     ;
 
 propertyImplementation
