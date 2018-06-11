@@ -42,13 +42,17 @@ public class ObjcG4Util {
     @Nullable
     public static ParseTree getParseTree(CharStream cs) {
         //region pre parser
+        ObjectiveCPreprocessorLexer preLexer = new ObjectiveCPreprocessorLexer(cs);
 
-        PreprocessorParser preprocessorParser = new PreprocessorParser(cs).invoke();
+        CommonTokenStream preToken = new CommonTokenStream(preLexer);
 
+        ObjectiveCPreprocessorParser preParser = new ObjectiveCPreprocessorParser(preToken);
+        /// remove error log handler
+        preParser.removeErrorListeners();
 
-        ObjectiveCPreprocessor preprocessor = preprocessorParser.getPreprocessor();
-        ObjectiveCPreprocessorParser.ObjectiveCDocumentContext preParseTree = preprocessorParser.getPreParseTree();
+        ObjectiveCPreprocessorParser.ObjectiveCDocumentContext preParseTree = preParser.objectiveCDocument();
 
+        ObjectiveCPreprocessor preprocessor = new ObjectiveCPreprocessor(preToken);
         String codeString = preprocessor.visit(preParseTree);
         //endregion
 

@@ -347,6 +347,16 @@ public interface ObjectiveCParserListener extends ParseTreeListener {
 	 */
 	void exitMethodType(ObjectiveCParser.MethodTypeContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ObjectiveCParser#methodReturnType}.
+	 * @param ctx the parse tree
+	 */
+	void enterMethodReturnType(ObjectiveCParser.MethodReturnTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ObjectiveCParser#methodReturnType}.
+	 * @param ctx the parse tree
+	 */
+	void exitMethodReturnType(ObjectiveCParser.MethodReturnTypeContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ObjectiveCParser#propertyImplementation}.
 	 * @param ctx the parse tree
 	 */

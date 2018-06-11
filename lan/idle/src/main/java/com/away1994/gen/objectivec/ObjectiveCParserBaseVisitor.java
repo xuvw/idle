@@ -254,6 +254,13 @@ public class ObjectiveCParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> 
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitMethodReturnType(ObjectiveCParser.MethodReturnTypeContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitPropertyImplementation(ObjectiveCParser.PropertyImplementationContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

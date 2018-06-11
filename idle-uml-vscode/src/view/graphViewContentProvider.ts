@@ -4,14 +4,41 @@ import * as vscode from 'vscode';
 import { Disposable } from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
+import {Client, client} from 'stompjs';
 
 export class GraphViewContentProvider extends Disposable implements vscode.TextDocumentContentProvider {
     private _onDidChange = new vscode.EventEmitter<vscode.Uri>();
     private lastUri!: vscode.Uri;
     private serverPort!: number;
+    private client!: Client;
     constructor() {
         super(() => { });
         this.ServerPort = 8080;
+
+        // 
+        this.client = client(`http://localhost:${this.serverPort}/websocket/idle/`);
+
+        this.client.connect({}, (_) => {
+            
+            this.client.subscribe('/app/initial', function (messageOutput:any) {
+                console.log("INITIAL: " + messageOutput.body);
+            });
+
+            this.client.subscribe('/topic/status', function (messageOutput:any) {
+                
+            });
+
+            this.client.subscribe('/topic/greetings', function (messageOutput:any) {
+                console.log(messageOutput);
+            });
+
+
+            this.client.send("/app/hello", {}, JSON.stringify({'name': "away"}));
+            
+        }, (err:String) => {
+            console.error(err);
+        });
+
     }
     public dispose() {
     }

@@ -214,6 +214,12 @@ public interface ObjectiveCParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMethodType(ObjectiveCParser.MethodTypeContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link ObjectiveCParser#methodReturnType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMethodReturnType(ObjectiveCParser.MethodReturnTypeContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link ObjectiveCParser#propertyImplementation}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

@@ -287,6 +287,7 @@ public class ObjectiveCLanguageParser extends LanguageParserImpl implements Lang
                 FunctionImpl function = new FunctionImpl(name, clazz);
                 clazz.iFunctions.add(function);
                 functions.add(function);
+                function.setRuleContext(ctx);
                 return super.visitMethodDeclaration(ctx);
             }
 
