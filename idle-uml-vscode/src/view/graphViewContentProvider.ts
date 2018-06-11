@@ -16,7 +16,7 @@ export class GraphViewContentProvider extends Disposable implements vscode.TextD
         this.ServerPort = 8080;
 
         // 
-        this.client = client(`http://localhost:${this.serverPort}/websocket/idle/`);
+        this.client = client(`ws://localhost:${this.serverPort}/websocket/idle`);
 
         this.client.connect({}, (_) => {
             
